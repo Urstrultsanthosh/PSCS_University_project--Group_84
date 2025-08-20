@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="chat-container">
+    <form method="POST">
+        <textarea name="query" id="chat-input" placeholder="{% if language == 'english' %}Ask your question here...{% elif language == 'hindi' %}अपना सवाल यहाँ पूछें...{% elif language == 'telugu' %}ఇక్కడ మీ ప్రశ్న అడగండి...{% elif language == 'kannada' %}ನಿಮ್ಮ ಪ್ರಶ್ನೆಯನ್ನು ಇಲ್ಲಿ ಕೇಳಿ...{% endif %}" required></textarea><br>
+        <button type="submit">{% if language == 'english' %}Send{% elif language == 'hindi' %}भेजें{% elif language == 'telugu' %}పంపండి{% elif language == 'kannada' %}ಕಳುಹಿಸಿ{% endif %}</button>
+    </form>
+    {% if response %}
+    <div class="chat-response">
+        <h3>{% if language == 'english' %}Response{% elif language == 'hindi' %}उत्तर{% elif language == 'telugu' %}స్పందన{% elif language == 'kannada' %}ಪ್ರತಿಕ್ರಿಯೆ{% endif %}:</h3>
+        <p>{{ response }}</p>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}
+full_prompt = language_prefix.get(language, 'Answer in English: ') + prompt

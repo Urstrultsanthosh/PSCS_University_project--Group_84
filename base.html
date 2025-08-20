@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chatbot to respond to text queries pertaining to various Acts, Rules, and Regulations applicable to Mining industries</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <!-- Include SimpleKeyboard CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-keyboard@latest/build/css/index.css">
+</head>
+<body>
+    <header>
+        <h1>Mining Chatbot</h1>
+        {% if session.get('user') %}
+            <a href="{{ url_for('logout') }}" class="logout-button">Logout</a>
+        {% endif %}
+    </header>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+    <!-- Include SimpleKeyboard JS -->
+    <script src="https://cdn.jsdelivr.net/npm/simple-keyboard@latest/build/index.js"></script>
+    <script src="{{ url_for('static', filename='js/keyboard.js') }}"></script>
+</body>
+</html>
